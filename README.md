@@ -26,7 +26,7 @@ Course project for CS526.
 
 3. Data Import:
 
-   You may import data using the following ways:
+   You may import data using one of the following ways:
 
    a) Then the databases can be constructed using the `diva_dump.sql` by 
 
