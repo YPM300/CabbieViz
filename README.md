@@ -1,5 +1,9 @@
 # CabbieViz
-Course Project
+
+Course project for CS526.
+
+## Deployment
+
 1. Dependencies Prepare:
 
    The `env.yaml` file contains the package dependencies of the project. 
@@ -43,3 +47,22 @@ Course Project
    Make sure you are under the folder `CabbieViz`, then change the variable `port` in the `run.py` to `your_port`. And then run the `run.py` script under the folder `CabbieViz`
 
    Then you can access the project by `localhost:your_port`
+
+
+
+
+
+## File Structure
+
+```
+├─app
+│  ├─models 		-- Data model defined for SQLAlchemy.
+│  ├─routes			-- Blueprint Routes for flask backend.
+│  ├─static			-- Static files for frontend including .js and .css.
+│  │  ├─css
+│  │  └─js
+│  │      └─data	-- Static data for frontend.
+│  └─templates		-- HTML files for frontend.
+└─data				-- Dynamic data stored in database and used for frontend 						request.
+```
+
