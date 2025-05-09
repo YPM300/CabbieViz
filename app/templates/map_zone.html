@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,3 +85,91 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CabbieViz – NYC Taxi Zones</title>
+
+  <link rel="stylesheet" href="{{ url_for ('static', filename='css/styles.css') }}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment/min/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <script type="module" src="{{ url_for ('static', filename='js/map_zone_local.js') }}" defer></script>
+</head>
+<body style="margin:0; padding:0;">
+
+  <div id="loading-overlay"
+       style="position:absolute; top:0; left:0; width:100%; height:100%;
+              background:rgba(255,255,255,0.8); display:none;
+              align-items:center; justify-content:center; font-size:2em; z-index:1000;">
+    Loading…
+  </div>
+
+  <header style="text-align:center; padding:1rem 0; background:#fafafa; box-shadow:0 1px 4px rgba(0,0,0,0.1);">
+    <h1 style="margin:0;">CabbieViz – NYC Taxi Zones</h1>
+    <div id="controls" style="margin-top:0.5rem; display:inline-flex; gap:1rem;">
+      <button
+        data-link="/line-chart"
+        onclick="window.location.href=this.dataset.link">
+        View Line Chart
+      </button>
+      <div id="mode-controls">
+        <button data-mode="pickup"  class="active">Pickups</button>
+        <button data-mode="dropoff">Drop-offs</button>
+        <button data-mode="avgFare">Avg Fare</button>
+      </div>
+      <div id="scale-controls">
+        <button data-scale="local"  class="active">Local Scale</button>
+        <button data-scale="global">Global Scale</button>
+      </div>
+      <div id="transform-controls">
+        <button data-transform="linear" class="active">Linear</button>
+        <button data-transform="log">Log</button>
+      </div>
+      <div id="flow-controls">
+        <button id="toggle-flows">Hide Flows</button>
+      </div>
+    </div>
+  </header>
+
+  <main style="display:flex; height:calc(100vh - 120px);">
+    <!-- left column: map + date picker -->
+    <section style="flex:1; position:relative; overflow:hidden;">
+      <!-- date range picker -->
+      <div style="padding:0.5rem; z-index:10; position:absolute; top:0; left:0;">
+        <label for="daterange">Date range:</label>
+        <input type="text" id="daterange" name="daterange"
+               value="01/01/2024 – 01/31/2024"
+               style="margin-left:0.5rem; padding:0.3rem; width:180px;" />
+      </div>
+
+      <!-- tooltip -->
+      <div id="tooltip" style="
+        position:absolute; pointer-events:none;
+        background:rgba(255,255,255,0.9); padding:6px 10px;
+        border:1px solid #aaa; border-radius:4px;
+        font-size:0.9em; opacity:0; transition:opacity 0.1s ease;
+      "></div>
+
+      <!-- map SVG -->
+      <svg id="map" width="100%" height="100%"></svg>
+    </section>
+
+    <!-- right column: legend (scrollable if too large) -->
+    <aside style="width:30%; min-width:300px; max-width:500px;
+                  background:#fff; overflow:auto; padding:1rem;
+                  box-shadow:-2px 0 4px rgba(0,0,0,0.1);">
+      <h2 style="margin-top:0; font-size:1.5em; text-align:center;">Legend</h2>
+      <svg id="legend" width="100%" height="375"></svg>
+    </aside>
+  </main>
+
+</body>
+</html>
+>>>>>>> master
